@@ -10,3 +10,5 @@ Operadores de comparação;
 !== diferene estrito (valor te tipo)
 */
 
+const comp = 10 >= 10;
+console.log(comp);
