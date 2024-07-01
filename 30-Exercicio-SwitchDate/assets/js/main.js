@@ -1,3 +1,7 @@
+function zeroAEsquerda(num) {
+    return num >= 10 ? num : `0${num}`;
+}
+
 function getDiaSemanaTexto (diaSemana) {
     let diaSemanaTexto;
 
@@ -6,19 +10,19 @@ function getDiaSemanaTexto (diaSemana) {
             diaSemanaTexto = 'Domingo';
             return diaSemanaTexto;
         case 1:
-            diaSemanaTexto = 'Segunda';
+            diaSemanaTexto = 'Segunda-Feira';
             return diaSemanaTexto;
         case 2:
-            diaSemanaTexto = 'Terça';
+            diaSemanaTexto = 'Terça-Feira';
             return diaSemanaTexto;
         case 3:
-            diaSemanaTexto = 'Quarta';
+            diaSemanaTexto = 'Quarta-Feira';
             return diaSemanaTexto;
         case 4:
-            diaSemanaTexto = 'Quinta';
+            diaSemanaTexto = 'Quinta-Feira';
             return diaSemanaTexto;
         case 5:
-            diaSemanaTexto = 'Sexta';
+            diaSemanaTexto = 'Sexta-Feira';
             return diaSemanaTexto;
         case 6:
             diaSemanaTexto = 'Sábado';
@@ -68,59 +72,21 @@ function getMesAno (mesAno) {
         case 11:
             mesAnoTexto = 'Dezembro';
     }
-}
+} 
+
+const textoHoraAtual = document.querySelector('#horaAtual');
 
 const data = new Date();
-let diaSemana = data.getDay();
-let mesAno = data.getMonth() + 1;
-const diaSemanaTexto = getDiaSemanaTexto(diaSemana);
-const mesAnoTexto = getMesAno(mesAno);
 
-console.log(diaSemana, diaSemanaTexto, mesAnoTexto);
+const dia = data.getDate();
+const mesAno = data.getMonth();    
+const ano = data.getFullYear();
+const hora = data.getHours();
+const min = data.getMinutes();
+const diaSemana = data.getDay();
 
+const mesTexto = getMesAno (mesAno);
+const SemanaTexto = getDiaSemanaTexto(diaSemana);
 
-// switch (diaSemana) {
-//     case 0:
-//         diaSemanaTexto = 'Domingo';
-//         break;
-//     case 1:
-//         diaSemanaTexto = 'Segunda';
-//         break;
-//     case 2:
-//         diaSemanaTexto = 'Terça';
-//         break;
-//     case 3:
-//         diaSemanaTexto = 'Quarta';
-//         break;
-//     case 4:
-//         diaSemanaTexto = 'Quinta';
-//         break;
-//     case 5:
-//         diaSemanaTexto = 'Sexta';
-//         break;
-//     case 6:
-//         diaSemanaTexto = 'Sábado';
-//         break;
-//     default:
-//         diaSemanaTexto = '';   
-// }
-
-// if (diaSemana === 0) {
-//     diaSemanaTexto = 'Domingo';
-// } else if (diaSemana === 1) {
-//     diaSemanaTexto = 'Segunda';
-// } else if (diaSemana === 2) {
-//     diaSemanaTexto = 'Terça';
-// } else if (diaSemana === 3) {
-//     diaSemanaTexto = 'Quarta';
-// } else if (diaSemana === 4) {
-//     diaSemanaTexto = 'Quinta';
-// } else if (diaSemana === 5) {
-//     diaSemanaTexto = 'Sexta';
-// } else if (diaSemana === 6) {
-//     diaSemanaTexto = 'Sábado';
-// } else {
-//     diaSemanaTexto = '';
-// }
-
-
+textoHoraAtual.innerHTML = `<h1>${SemanaTexto}, ${zeroAEsquerda(dia)} de ${mesTexto} de ${ano} às ${zeroAEsquerda(hora)}:${zeroAEsquerda(min)}.<h1>`;
+console.log(`${SemanaTexto}, ${dia} de ${mesTexto} de ${ano}`);
