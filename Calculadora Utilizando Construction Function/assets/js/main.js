@@ -5,11 +5,12 @@ function Calculadora() {
         this.capturaClick();
         this.capturaEnter();
         this.capturaEsc();
+        this.display.focus();
     };
 
     this.capturaEnter = () => {
         document.addEventListener('keyup', e => {
-            if(e.keyCode !== 13 ) return;
+            if(e.keyCode !== 13) return;
             this.realizaConta();
         });
     };
@@ -18,6 +19,7 @@ function Calculadora() {
         document.addEventListener('keydown', e => {
             if(e.keyCode !== 27) return;
             this.clear();
+            this.display.focus();
         });
     };
 
@@ -46,7 +48,10 @@ function Calculadora() {
         }
     };
 
-    this.addNumDisplay = el => this.display.value += el.innerText;
+    this.addNumDisplay = el => {
+        this.display.value += el.innerText;
+        this.display.focus();
+    };
     this.clear = el => this.display.value = '';
     this.del = () => this.display.value = this.display.value.slice(0, -1);
     
